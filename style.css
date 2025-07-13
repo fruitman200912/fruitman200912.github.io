@@ -1,0 +1,285 @@
+* {
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  background-image: url(grass.png);
+  z-index: 0;
+}
+
+#main {
+  background-image: url(main.png);
+  background-size: cover;
+  position: fixed;
+  top: 0px;
+  left: 64px;
+  z-index: 2;
+  width: 128px;
+  height: 192px;
+}
+
+#main .hp-bar {
+  position: absolute;
+  top: 32px;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+#main .hp-inner {
+  height: 100%;
+  background: red;
+  width: 100%;
+  transition: width 0.2s ease-out;
+}
+
+
+.way {
+  background-image: url(way/way1.png);
+  background-size: cover;
+  position: fixed;
+  top: 128px;
+  left: 192px;
+  z-index: 1;
+  width: 64px;
+  height: 64px;
+}
+
+.tile {
+  background-image: url(tile.png);
+  position: fixed;
+  top: 64px;
+  left: 192px;
+  z-index: 1;
+  width: 64px;
+  height: 64px;
+}
+
+.card {
+  display: none;
+  background-color: lightblue;
+  position: fixed;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, 40%);
+  width: 192px;
+  height: 320px;
+  border-radius: 16px;
+  z-index: 100;
+}
+
+.choiceCard {
+  position: absolute;
+  z-index: 9999;
+  cursor: pointer;
+  left: 50%;
+  transition: all 0.3s ease;
+  transform-origin: center center;
+  transform: translate(-50%, -50%);
+}
+
+.choiceCard:hover {
+  transform: scale(1.1) translateY(-45%) translateX(-45%) !important;
+}
+
+#haveCardContainer {
+  position: relative;
+  bottom: 240px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 340px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 10;
+}
+
+
+#haveCardContainer.hide {
+  z-index: 10 !important;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.haveCard {
+  position: absolute;
+  transform: translateY(640px);
+  transition: transform 0.3s ease;
+  z-index: 10;
+  margin-left: 0;
+}
+
+
+.haveCard:hover {
+  transform: translateY(532px);
+  z-index: 999 !important;
+}
+
+div.highlightCard {
+  border: red solid 2px;
+  transform: translateY(532px);
+  z-index: 999 !important;
+}
+
+.building {
+  position: fixed;
+  display: none;
+  z-index: 10;
+  width: 64px;
+  height: 64px;
+}
+
+/*bulidingList >------------------------------------------------------------*/
+div.building1 {
+  background-image: url(archer.png);
+}
+
+div.building2 {
+  background-image: url(musket.png);
+}
+
+div.building3 {
+  background-image: url(sniper.png);
+}
+
+#choiceBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: block;
+  z-index: 99;
+}
+
+/* monster >---------------------------------------------------------------*/
+.monster {
+  position: fixed;
+  display: none;
+  width: 64px;
+  height: 64px;
+  z-index: 15;
+  pointer-events: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.hp-bar {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  overflow: hidden;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.hp-inner {
+  height: 100%;
+  background: red;
+  width: 100%;
+  transition: width 0.2s ease-out;
+  z-index: 21;
+  pointer-events: none;
+}
+
+.projectile {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background-image: url(arow.png);
+  border-radius: 50%;
+  z-index: 999;
+  pointer-events: none;
+}
+
+#playerStats {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+#expBarContainer {
+  width: 10px;
+  height: 150px;
+  background-color: #555;
+  border-radius: 5px;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#expBarFill {
+  height: 0%;
+  width: 100%;
+  background-color: #0f0;
+  border-radius: 5px;
+}
+
+#timeDisplay {
+  font-size: 16px;
+  margin-top: 8px;
+  display: block;
+}
+
+/* spell-explosion >-------------------------------------------------------*/
+.spell-explosion {
+  position: absolute;
+  background-color: rgba(255, 165, 0, 0.7);
+  border-radius: 50%;
+  transform: scale(0);
+  opacity: 1;
+  animation: explode 0.5s forwards;
+  z-index: 9998;
+  pointer-events: none;
+}
+
+@keyframes explode {
+  from {
+    transform: scale(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* spell-range-preview >---------------------------------------------------*/
+#spellRangePreview {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(0, 255, 0, 0.3);
+  border: 1px dashed rgba(0, 255, 0, 0.7);
+  display: none;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+
+.enemyProjectile {
+  position: fixed;
+  width: 64px;
+  height: 64px;
+  background-image: url('goblinProjectile.png');
+  background-size: cover;
+  z-index: 1000;
+  pointer-events: none;
+}
